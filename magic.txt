@@ -1,11 +1,16 @@
 Magic formula:
 Team score for a single game = (O-factor + D-factor) * X-factor * Win factor
-Team score for a season = Sum of all individual game scores * Opp W-L factor
+Team score for a season = Sum of all individual game scores * Opp W-L factor?
 
-X-factor = arctan(O-factor - D-factor)
+#X-factor = arctan(O-factor - D-factor)
+abs(O-factor - D-factor)
+X-factor = (1/e) * e^((-((1/100)*(abs(O-factor - D-factor))))^2) + 1
 
 O-factor = ((rushing yards/carry * e^e) + (passing yards/attempt * e^2)) * arctan(total offensive yards)
 
+3-rate = Opponent 3rd down conversion rate
+3-factor = (e^arctan(1 - 3-rate)) - (1/e)
+D-factor = ((1 / (rushing yards/carry) + 1) + (1 / (passing yards/attempt) + (e / 3))) * 3-factor
 
 M-V = Score - Opponent's score (negatives allowed)
 Win factor = e^arctan((M-V) / e^e)

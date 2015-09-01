@@ -72,6 +72,8 @@ while (my $row = $csv->getline($fh)) {
         my $h_total_yards = $row->[$columns->{home_rushing_yards}] + $row->[$columns->{home_passing_yards}] - $row->[$columns->{home_penalty_yards}];
         my $h_o_factor = (($h_rushing_ypc * e**e) + ($h_passing_ypa * e**2)) * atan2($h_total_yards, 1);
         say "\tO-Factor for home: " . $h_o_factor;
+
+
 }
 
 close $fh;
