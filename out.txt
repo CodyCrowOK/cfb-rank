@@ -1,0 +1,162 @@
+ BYU at  UCF
+	O-Factor for visitor: 139.483274089897
+	O-Factor for home: 117.991461213912
+ Washington State at  Stanford
+	O-Factor for visitor: -7.12257601778355
+	O-Factor for home: 233.024676264559
+ San Diego State at  New Mexico
+	O-Factor for visitor: 254.840031362065
+	O-Factor for home: 148.437886458199
+ Fresno State at  UNLV
+	O-Factor for visitor: 209.124265270604
+	O-Factor for home: 171.631406148748
+ Middle Tennessee at  Marshall
+	O-Factor for visitor: 171.373652933342
+	O-Factor for home: 233.583035016751
+ Rice at  Army
+	O-Factor for visitor: 220.779700157117
+	O-Factor for home: 185.275639138462
+ Cincinnati at  Miami (Florida)
+	O-Factor for visitor: 123.455095510779
+	O-Factor for home: 360.128784596549
+ Tulsa at  Temple
+	O-Factor for visitor: 168.244151396382
+	O-Factor for home: 247.802902334466
+ Florida State at  Syracuse
+	O-Factor for visitor: 211.004698895047
+	O-Factor for home: 201.955598465265
+ West Virginia at  Texas Tech
+	O-Factor for visitor: 197.686847012765
+	O-Factor for home: 223.425545510345
+ Texas at  Oklahoma
+	O-Factor for visitor: 175.89866174047
+	O-Factor for home: 156.120958686879
+ Illinois at  Wisconsin
+	O-Factor for visitor: 158.249211391339
+	O-Factor for home: 265.263114164023
+ Indiana at  Iowa
+	O-Factor for visitor: 256.480664562579
+	O-Factor for home: 191.113855087414
+ Northwestern at  Minnesota
+	O-Factor for visitor: 148.989645215064
+	O-Factor for home: 191.703463694534
+ Louisiana-Monroe at  Kentucky
+	O-Factor for visitor: 101.186157352067
+	O-Factor for home: 194.785014135237
+ Georgia at  Missouri
+	O-Factor for visitor: 153.546294735935
+	O-Factor for home: 107.126429349743
+ Duke at  Georgia Tech
+	O-Factor for visitor: 180.705536650988
+	O-Factor for home: 235.296817010913
+ Buffalo at  Eastern Michigan
+	O-Factor for visitor: 200.347516740243
+	O-Factor for home: 258.113105524023
+ Bowling Green at  Ohio
+	O-Factor for visitor: 160.767383375436
+	O-Factor for home: 135.483366981946
+ Miami (Ohio) at  Akron
+	O-Factor for visitor: 99.3940349120702
+	O-Factor for home: 150.595371094786
+ Massachusetts at  Kent State
+	O-Factor for visitor: 220.286943728252
+	O-Factor for home: 184.57743401291
+ Arkansas State at  Georgia State
+	O-Factor for visitor: 262.711200182329
+	O-Factor for home: 108.373262977418
+ New Mexico State at  Troy
+	O-Factor for visitor: 172.430902810504
+	O-Factor for home: 243.026363710475
+ Western Michigan at  Ball State
+	O-Factor for visitor: 280.714832610928
+	O-Factor for home: 174.231087302592
+ North Texas at  UAB
+	O-Factor for visitor: 183.77924168612
+	O-Factor for home: 223.338260619904
+ Michigan State at  Purdue
+	O-Factor for visitor: 237.097171718006
+	O-Factor for home: 188.642330690315
+ Toledo at  Iowa State
+	O-Factor for visitor: 197.613304199664
+	O-Factor for home: 148.745170474806
+ North Carolina at  Notre Dame
+	O-Factor for visitor: 197.477692606023
+	O-Factor for home: 210.901157333464
+ TCU at  Baylor
+	O-Factor for visitor: 164.088185901224
+	O-Factor for home: 227.310902093825
+ Boston College at  North Carolina State
+	O-Factor for visitor: 190.841134390848
+	O-Factor for home: 103.539735913692
+ Louisville at  Clemson
+	O-Factor for visitor: 114.228348235062
+	O-Factor for home: 98.3688473138483
+ Virginia Military at  Navy
+	O-Factor for visitor: 105.964262146738
+	O-Factor for home: 329.120081028385
+ Auburn at  Mississippi State
+	O-Factor for visitor: 197.413901387073
+	O-Factor for home: 201.915597769846
+ Liberty at  Appalachian State
+	O-Factor for visitor: 199.301605910886
+	O-Factor for home: 298.649433954305
+ Oregon at  UCLA
+	O-Factor for visitor: 239.712410806981
+	O-Factor for home: 213.025020212836
+ Chattanooga at  Tennessee
+	O-Factor for visitor: 132.570080621255
+	O-Factor for home: 156.265100851055
+ Oklahoma State at  Kansas
+	O-Factor for visitor: 133.254570051393
+	O-Factor for home: 142.887619102038
+ Central Michigan at  Northern Illinois
+	O-Factor for visitor: 246.863306946016
+	O-Factor for home: 160.261426476997
+ Washington at  California
+	O-Factor for visitor: 178.427025846256
+	O-Factor for home: 115.115518142476
+ Alabama at  Arkansas
+	O-Factor for visitor: 137.634786919439
+	O-Factor for home: 125.443090772862
+ Idaho at  Georgia Southern
+	O-Factor for visitor: 153.947168508738
+	O-Factor for home: 298.386899875686
+ Florida International at  UTSA
+	O-Factor for visitor: 122.366798462542
+	O-Factor for home: 160.731307789162
+ Penn State at  Michigan
+	O-Factor for visitor: 92.6915120936792
+	O-Factor for home: 134.475437413631
+ East Carolina at  South Florida
+	O-Factor for visitor: 233.511905380474
+	O-Factor for home: 152.679664772042
+ Houston at  Memphis
+	O-Factor for visitor: 176.369006123888
+	O-Factor for home: 148.512068848651
+ LSU at  Florida
+	O-Factor for visitor: 150.443250488959
+	O-Factor for home: 176.045680131089
+ Charleston So. at  Vanderbilt
+	O-Factor for visitor: 203.338209005711
+	O-Factor for home: 176.236138980577
+ Connecticut at  Tulane
+	O-Factor for visitor: 127.153601360042
+	O-Factor for home: 180.24612297334
+ Old Dominion at  UTEP
+	O-Factor for visitor: 227.420519169792
+	O-Factor for home: 210.807641348378
+ Mississippi at  Texas A&M
+	O-Factor for visitor: 217.120410414663
+	O-Factor for home: 124.346577533334
+ Air Force at  Utah State
+	O-Factor for visitor: 161.702543368558
+	O-Factor for home: 181.567484729199
+ Colorado State at  Nevada
+	O-Factor for visitor: 188.134445236759
+	O-Factor for home: 174.470512264824
+ USC at  Arizona
+	O-Factor for visitor: 217.020790332852
+	O-Factor for home: 126.695232812003
+ Wyoming at  Hawai'i
+	O-Factor for visitor: 158.000672090892
+	O-Factor for home: 235.575936749455

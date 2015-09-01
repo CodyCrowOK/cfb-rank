@@ -1,0 +1,14 @@
+Magic formula:
+Team score for a single game = (O-factor + D-factor) * X-factor * Win factor
+Team score for a season = Sum of all individual game scores * Opp W-L factor
+
+X-factor = arctan(O-factor - D-factor)
+
+O-factor = ((rushing yards/carry * e^e) + (passing yards/attempt * e^2)) * arctan(total offensive yards)
+
+
+M-V = Score - Opponent's score (negatives allowed)
+Win factor = e^arctan((M-V) / e^e)
+
+
+e = Euler's number
