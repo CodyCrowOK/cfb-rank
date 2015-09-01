@@ -8,8 +8,10 @@ use Text::CSV;
 
 use constant e => 2.718281828459;
 
+sub trim;
+sub add_game;
+
 my $input = "input.csv";
-my $output = "output.txt";
 
 my $columns = {
 	date => 0,
@@ -49,6 +51,25 @@ my $columns = {
 	home_score => 34,
 };
 
+my $teams = {
+#	"teamname" => [
+#		{
+#			opponent => "Bowling Green",
+#			win => 1,
+#			score => 1032,
+#			x_factor => .610923
+#		},
+#	],
+};
+
+#my $game = {
+#	team => "teamname",
+#	opponent => "oppname",
+#	win => 1,
+#	score => 1238,
+#	x_factor => .54092323904,
+#};
+
 open my $fh, "<", $input or die "$input: $!";
 my $csv = Text::CSV->new({
 	binary    => 1,
@@ -59,7 +80,7 @@ my $csv = Text::CSV->new({
 $csv->getline($fh);
 
 while (my $row = $csv->getline($fh)) {
-	say $row->[$columns->{visitor}] . " at " . $row->[$columns->{home}];
+	say trim $row->[$columns->{visitor}] . " at " . trim $row->[$columns->{home}];
 
         my $v_rushing_ypc = $row->[$columns->{visitor_rushing_yards}] / $row->[$columns->{visitor_rushing_attempts}];
         my $v_passing_ypa = $row->[$columns->{visitor_passing_yards}] / $row->[$columns->{visitor_passing_attempts}];
@@ -116,7 +137,49 @@ while (my $row = $csv->getline($fh)) {
         say "\tGame Score for visitor: " . $v_game_score;
         say "\tGame Score for home: " . $h_game_score;
 
+	my $v_game = {
+		team => trim $row->[$columns->{visitor}],
+		opponent => trim $row->[$columns->{home}],
+		win => $v_margin > 0,
+		score => $v_game_score,
+		x_factor => $v_x_factor,
+	};
 
+	my $h_game = {
+		team => trim $row->[$columns->{home}],
+		opponent => trim $row->[$columns->{visitor}],
+		win => $v_margin < 0,
+		score => $h_game_score,
+		x_factor => $h_x_factor,
+	};
+
+	$teams = add_game $teams, $v_game;
+	#TODO
 }
 
 close $fh;
+
+#say $teams->{"teamname"}->[0]->{score};
+
+sub trim {
+	my $string = $_[0];
+	$string =~ s/^\s+|\s+$//g;
+	return $string;
+}
+
+#$teams is the data structure for all of the games
+#$game is the structure for an individual team's game
+
+sub add_game {
+	my ($teams, $game) = @_;
+	$teams->{$game->{team}} = [] unless ($teams->{$game->{team}});
+	push $teams->{$game->{team}}, {
+		opponent => $game->{opponent},
+		win => $game->{win},
+		score => $game->{score},
+		x_factor => $game->{x_factor},
+	};
+
+	return $teams;
+
+}

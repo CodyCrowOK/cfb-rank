@@ -1,4 +1,4 @@
- UCF at  East Carolina
+UCF at East Carolina
 	O-Factor for visitor: 184.139175872177
 	O-Factor for home: 106.142463173154
 	D-Factor for visitor: 330.641479941635
@@ -9,7 +9,7 @@
 	Win Factor for home: 1.87702678810731
 	Game Score for visitor: 574.564576332442
 	Game Score for home: 370.777549705829
- Northern Illinois at  Bowling Green
+Northern Illinois at Bowling Green
 	O-Factor for visitor: 207.27450141997
 	O-Factor for home: 159.649566861579
 	D-Factor for visitor: 279.529469661653
@@ -20,7 +20,7 @@
 	Win Factor for home: 1.3161581581414
 	Game Score for visitor: 1234.43159281541
 	Game Score for home: 313.922786454287
- Arizona at  Oregon
+Arizona at Oregon
 	O-Factor for visitor: 125.427365869995
 	O-Factor for home: 227.014864746119
 	D-Factor for visitor: 221.981279045041
@@ -31,7 +31,7 @@
 	Win Factor for home: 4.29144931183916
 	Game Score for visitor: 259.277322083377
 	Game Score for home: 1354.48620634724
- Louisiana Tech at  Marshall
+Louisiana Tech at Marshall
 	O-Factor for visitor: 145.082239376638
 	O-Factor for home: 159.721416316567
 	D-Factor for visitor: 289.089651335221
@@ -42,7 +42,7 @@
 	Win Factor for home: 2.21584244478347
 	Game Score for visitor: 413.929575188955
 	Game Score for home: 542.414863499944
- Houston at  Cincinnati
+Houston at Cincinnati
 	O-Factor for visitor: 251.71407457027
 	O-Factor for home: 190.190827998423
 	D-Factor for visitor: 238.005656174429
@@ -53,7 +53,7 @@
 	Win Factor for home: 2.54144328668766
 	Game Score for visitor: 549.46296325912
 	Game Score for home: 690.909463046838
- SMU at  Connecticut
+SMU at Connecticut
 	O-Factor for visitor: 190.964972128679
 	O-Factor for home: 199.645329065318
 	D-Factor for visitor: 267.202761344134
@@ -64,7 +64,7 @@
 	Win Factor for home: 1.64874264829351
 	Game Score for visitor: 701.976891692455
 	Game Score for home: 472.70917800965
- Iowa State at  TCU
+Iowa State at TCU
 	O-Factor for visitor: 105.206356609892
 	O-Factor for home: 258.572630341899
 	D-Factor for visitor: 243.924265155554
@@ -75,7 +75,7 @@
 	Win Factor for home: 4.62270895562903
 	Game Score for visitor: 234.714394762037
 	Game Score for home: 1641.89176149568
- Oklahoma State at  Oklahoma
+Oklahoma State at Oklahoma
 	O-Factor for visitor: 192.701238760015
 	O-Factor for home: 196.478292543695
 	D-Factor for visitor: 233.425265751212
@@ -86,7 +86,7 @@
 	Win Factor for home: 1.82247498784934
 	Game Score for visitor: 619.253508360379
 	Game Score for home: 513.882199249022
- Alabama at  Missouri
+Alabama at Missouri
 	O-Factor for visitor: 229.895247330053
 	O-Factor for home: 134.946881429713
 	D-Factor for visitor: 280.782434678076
@@ -97,7 +97,7 @@
 	Win Factor for home: 1.33646423155463
 	Game Score for visitor: 1302.21909392624
 	Game Score for home: 272.752919072333
- Temple at  Tulane
+Temple at Tulane
 	O-Factor for visitor: 150.543751830914
 	O-Factor for home: 131.757312984615
 	D-Factor for visitor: 343.039568735529
@@ -108,7 +108,7 @@
 	Win Factor for home: 1.64874264829351
 	Game Score for visitor: 632.880544995994
 	Game Score for home: 387.414227825351
- Kansas State at  Baylor
+Kansas State at Baylor
 	O-Factor for visitor: 189.934603838627
 	O-Factor for home: 227.009331549036
 	D-Factor for visitor: 153.974652560584
@@ -119,7 +119,7 @@
 	Win Factor for home: 2.87362894576382
 	Game Score for visitor: 348.983365070408
 	Game Score for home: 901.345914200176
- Florida State at  Georgia Tech
+Florida State at Georgia Tech
 	O-Factor for visitor: 248.311756989951
 	O-Factor for home: 244.288673614326
 	D-Factor for visitor: 219.40847192989
@@ -130,7 +130,7 @@
 	Win Factor for home: 1.87702678810731
 	Game Score for visitor: 669.881884333512
 	Game Score for home: 542.751383418044
- Wisconsin at  Ohio State
+Wisconsin at Ohio State
 	O-Factor for visitor: 95.8936238369764
 	O-Factor for home: 353.833922645312
 	D-Factor for visitor: 265.237422118722
@@ -141,7 +141,7 @@
 	Win Factor for home: 4.74109849483065
 	Game Score for visitor: 233.614774288598
 	Game Score for home: 2119.10050597276
- Fresno State at  Boise State
+Fresno State at Boise State
 	O-Factor for visitor: 124.190913355471
 	O-Factor for home: 219.375004232681
 	D-Factor for visitor: 241.45340631569
