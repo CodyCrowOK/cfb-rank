@@ -5,6 +5,7 @@ use warnings;
 use feature ":5.10";
 
 use Text::CSV;
+use Data::Dumper;
 
 use constant e => 2.718281828459;
 
@@ -138,28 +139,27 @@ while (my $row = $csv->getline($fh)) {
         say "\tGame Score for home: " . $h_game_score;
 
 	my $v_game = {
-		team => trim $row->[$columns->{visitor}],
-		opponent => trim $row->[$columns->{home}],
+		team => trim($row->[$columns->{visitor}]),
+		opponent => trim($row->[$columns->{home}]),
 		win => $v_margin > 0,
 		score => $v_game_score,
 		x_factor => $v_x_factor,
 	};
 
 	my $h_game = {
-		team => trim $row->[$columns->{home}],
-		opponent => trim $row->[$columns->{visitor}],
+		team => trim ($row->[$columns->{home}]),
+		opponent => trim ($row->[$columns->{visitor}]),
 		win => $v_margin < 0,
 		score => $h_game_score,
 		x_factor => $h_x_factor,
 	};
 
-	$teams = add_game $teams, $v_game;
-	#TODO
+	$teams = add_game $teams, $v_game, $h_game;
 }
 
 close $fh;
 
-#say $teams->{"teamname"}->[0]->{score};
+say Dumper($teams);
 
 sub trim {
 	my $string = $_[0];
@@ -171,15 +171,16 @@ sub trim {
 #$game is the structure for an individual team's game
 
 sub add_game {
-	my ($teams, $game) = @_;
-	$teams->{$game->{team}} = [] unless ($teams->{$game->{team}});
-	push $teams->{$game->{team}}, {
-		opponent => $game->{opponent},
-		win => $game->{win},
-		score => $game->{score},
-		x_factor => $game->{x_factor},
-	};
-
+	my $teams = shift @_;
+	foreach my $game (@_) {
+		$teams->{$game->{team}} = [] unless ($teams->{$game->{team}});
+		push $teams->{$game->{team}}, {
+			opponent => $game->{opponent},
+			win => $game->{win},
+			score => $game->{score},
+			x_factor => $game->{x_factor},
+		};
+	}
 	return $teams;
 
 }

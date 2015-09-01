@@ -152,3 +152,398 @@ Fresno State at Boise State
 	Win Factor for home: 3.10818478746825
 	Game Score for visitor: 294.61244649158
 	Game Score for home: 976.944178824025
+$VAR1 = {
+          'Oklahoma' => [
+                          {
+                            'win' => '',
+                            'opponent' => 'Oklahoma State',
+                            'score' => '513.882199249022',
+                            'x_factor' => '0.592709049155385'
+                          },
+                          {
+                            'win' => '',
+                            'x_factor' => '0.592709049155385',
+                            'score' => '513.882199249022',
+                            'opponent' => 'Oklahoma State'
+                          }
+                        ],
+          'Boise State' => [
+                             {
+                               'win' => 1,
+                               'x_factor' => '0.658652167149026',
+                               'score' => '976.944178824025',
+                               'opponent' => 'Fresno State'
+                             },
+                             {
+                               'win' => 1,
+                               'opponent' => 'Fresno State',
+                               'score' => '976.944178824025',
+                               'x_factor' => '0.658652167149026'
+                             }
+                           ],
+          'Louisiana Tech' => [
+                                {
+                                  'x_factor' => '0.523122233146503',
+                                  'score' => '413.929575188955',
+                                  'opponent' => 'Marshall',
+                                  'win' => ''
+                                },
+                                {
+                                  'win' => '',
+                                  'x_factor' => '0.523122233146503',
+                                  'score' => '413.929575188955',
+                                  'opponent' => 'Marshall'
+                                }
+                              ],
+          'Missouri' => [
+                          {
+                            'win' => '',
+                            'score' => '272.752919072333',
+                            'opponent' => 'Alabama',
+                            'x_factor' => '0.653951113374046'
+                          },
+                          {
+                            'x_factor' => '0.653951113374046',
+                            'score' => '272.752919072333',
+                            'opponent' => 'Alabama',
+                            'win' => ''
+                          }
+                        ],
+          'Fresno State' => [
+                              {
+                                'win' => '',
+                                'score' => '294.61244649158',
+                                'opponent' => 'Boise State',
+                                'x_factor' => '0.546504955318169'
+                              },
+                              {
+                                'opponent' => 'Boise State',
+                                'score' => '294.61244649158',
+                                'x_factor' => '0.546504955318169',
+                                'win' => ''
+                              }
+                            ],
+          'Baylor' => [
+                        {
+                          'win' => 1,
+                          'x_factor' => '0.683501318890787',
+                          'opponent' => 'Kansas State',
+                          'score' => '901.345914200176'
+                        },
+                        {
+                          'win' => 1,
+                          'opponent' => 'Kansas State',
+                          'score' => '901.345914200176',
+                          'x_factor' => '0.683501318890787'
+                        }
+                      ],
+          'Houston' => [
+                         {
+                           'win' => '',
+                           'score' => '549.46296325912',
+                           'opponent' => 'Cincinnati',
+                           'x_factor' => '0.680515387767842'
+                         },
+                         {
+                           'opponent' => 'Cincinnati',
+                           'score' => '549.46296325912',
+                           'x_factor' => '0.680515387767842',
+                           'win' => ''
+                         }
+                       ],
+          'Kansas State' => [
+                              {
+                                'x_factor' => '0.661627820661811',
+                                'opponent' => 'Baylor',
+                                'score' => '348.983365070408',
+                                'win' => ''
+                              },
+                              {
+                                'score' => '348.983365070408',
+                                'opponent' => 'Baylor',
+                                'x_factor' => '0.661627820661811',
+                                'win' => ''
+                              }
+                            ],
+          'East Carolina' => [
+                               {
+                                 'x_factor' => '0.508183627821805',
+                                 'opponent' => 'UCF',
+                                 'score' => '370.777549705829',
+                                 'win' => ''
+                               },
+                               {
+                                 'win' => '',
+                                 'score' => '370.777549705829',
+                                 'opponent' => 'UCF',
+                                 'x_factor' => '0.508183627821805'
+                               }
+                             ],
+          'Temple' => [
+                        {
+                          'win' => 1,
+                          'score' => '632.880544995994',
+                          'opponent' => 'Tulane',
+                          'x_factor' => '0.504522858230366'
+                        },
+                        {
+                          'win' => 1,
+                          'x_factor' => '0.504522858230366',
+                          'opponent' => 'Tulane',
+                          'score' => '632.880544995994'
+                        }
+                      ],
+          'Oklahoma State' => [
+                                {
+                                  'score' => '619.253508360379',
+                                  'opponent' => 'Oklahoma',
+                                  'x_factor' => '0.655829655853988',
+                                  'win' => 1
+                                },
+                                {
+                                  'win' => 1,
+                                  'x_factor' => '0.655829655853988',
+                                  'opponent' => 'Oklahoma',
+                                  'score' => '619.253508360379'
+                                }
+                              ],
+          'Ohio State' => [
+                            {
+                              'opponent' => 'Wisconsin',
+                              'score' => '2119.10050597276',
+                              'x_factor' => '0.663656917321032',
+                              'win' => 1
+                            },
+                            {
+                              'score' => '2119.10050597276',
+                              'opponent' => 'Wisconsin',
+                              'x_factor' => '0.663656917321032',
+                              'win' => 1
+                            }
+                          ],
+          'Alabama' => [
+                         {
+                           'opponent' => 'Missouri',
+                           'score' => '1302.21909392624',
+                           'x_factor' => '0.641975926963401',
+                           'win' => 1
+                         },
+                         {
+                           'x_factor' => '0.641975926963401',
+                           'opponent' => 'Missouri',
+                           'score' => '1302.21909392624',
+                           'win' => 1
+                         }
+                       ],
+          'Arizona' => [
+                         {
+                           'win' => '',
+                           'x_factor' => '0.572409845917482',
+                           'opponent' => 'Oregon',
+                           'score' => '259.277322083377'
+                         },
+                         {
+                           'win' => '',
+                           'x_factor' => '0.572409845917482',
+                           'opponent' => 'Oregon',
+                           'score' => '259.277322083377'
+                         }
+                       ],
+          'TCU' => [
+                     {
+                       'opponent' => 'Iowa State',
+                       'score' => '1641.89176149568',
+                       'x_factor' => '0.590849920619769',
+                       'win' => 1
+                     },
+                     {
+                       'win' => 1,
+                       'x_factor' => '0.590849920619769',
+                       'score' => '1641.89176149568',
+                       'opponent' => 'Iowa State'
+                     }
+                   ],
+          'Wisconsin' => [
+                           {
+                             'win' => '',
+                             'opponent' => 'Ohio State',
+                             'score' => '233.614774288598',
+                             'x_factor' => '0.510452862838963'
+                           },
+                           {
+                             'win' => '',
+                             'score' => '233.614774288598',
+                             'opponent' => 'Ohio State',
+                             'x_factor' => '0.510452862838963'
+                           }
+                         ],
+          'SMU' => [
+                     {
+                       'x_factor' => '0.602861975715738',
+                       'score' => '701.976891692455',
+                       'opponent' => 'Connecticut',
+                       'win' => 1
+                     },
+                     {
+                       'x_factor' => '0.602861975715738',
+                       'score' => '701.976891692455',
+                       'opponent' => 'Connecticut',
+                       'win' => 1
+                     }
+                   ],
+          'Marshall' => [
+                          {
+                            'win' => 1,
+                            'opponent' => 'Louisiana Tech',
+                            'score' => '542.414863499944',
+                            'x_factor' => '0.517286225198586'
+                          },
+                          {
+                            'win' => 1,
+                            'opponent' => 'Louisiana Tech',
+                            'score' => '542.414863499944',
+                            'x_factor' => '0.517286225198586'
+                          }
+                        ],
+          'Bowling Green' => [
+                               {
+                                 'opponent' => 'Northern Illinois',
+                                 'score' => '313.922786454287',
+                                 'x_factor' => '0.615763811087359',
+                                 'win' => ''
+                               },
+                               {
+                                 'score' => '313.922786454287',
+                                 'opponent' => 'Northern Illinois',
+                                 'x_factor' => '0.615763811087359',
+                                 'win' => ''
+                               }
+                             ],
+          'Florida State' => [
+                               {
+                                 'score' => '669.881884333512',
+                                 'opponent' => 'Georgia Tech',
+                                 'x_factor' => '0.669197743314071',
+                                 'win' => 1
+                               },
+                               {
+                                 'win' => 1,
+                                 'score' => '669.881884333512',
+                                 'opponent' => 'Georgia Tech',
+                                 'x_factor' => '0.669197743314071'
+                               }
+                             ],
+          'Northern Illinois' => [
+                                   {
+                                     'win' => 1,
+                                     'opponent' => 'Bowling Green',
+                                     'score' => '1234.43159281541',
+                                     'x_factor' => '0.609128933012456'
+                                   },
+                                   {
+                                     'opponent' => 'Bowling Green',
+                                     'score' => '1234.43159281541',
+                                     'x_factor' => '0.609128933012456',
+                                     'win' => 1
+                                   }
+                                 ],
+          'Tulane' => [
+                        {
+                          'win' => '',
+                          'x_factor' => '0.502898205102774',
+                          'score' => '387.414227825351',
+                          'opponent' => 'Temple'
+                        },
+                        {
+                          'opponent' => 'Temple',
+                          'score' => '387.414227825351',
+                          'x_factor' => '0.502898205102774',
+                          'win' => ''
+                        }
+                      ],
+          'Connecticut' => [
+                             {
+                               'opponent' => 'SMU',
+                               'score' => '472.70917800965',
+                               'x_factor' => '0.668545028087155',
+                               'win' => ''
+                             },
+                             {
+                               'win' => '',
+                               'x_factor' => '0.668545028087155',
+                               'score' => '472.70917800965',
+                               'opponent' => 'SMU'
+                             }
+                           ],
+          'Georgia Tech' => [
+                              {
+                                'x_factor' => '0.651010199407886',
+                                'opponent' => 'Florida State',
+                                'score' => '542.751383418044',
+                                'win' => ''
+                              },
+                              {
+                                'win' => '',
+                                'score' => '542.751383418044',
+                                'opponent' => 'Florida State',
+                                'x_factor' => '0.651010199407886'
+                              }
+                            ],
+          'Iowa State' => [
+                            {
+                              'win' => '',
+                              'x_factor' => '0.526852053092296',
+                              'score' => '234.714394762037',
+                              'opponent' => 'TCU'
+                            },
+                            {
+                              'x_factor' => '0.526852053092296',
+                              'opponent' => 'TCU',
+                              'score' => '234.714394762037',
+                              'win' => ''
+                            }
+                          ],
+          'UCF' => [
+                     {
+                       'win' => 1,
+                       'x_factor' => '0.52150564779241',
+                       'opponent' => 'East Carolina',
+                       'score' => '574.564576332442'
+                     },
+                     {
+                       'score' => '574.564576332442',
+                       'opponent' => 'East Carolina',
+                       'x_factor' => '0.52150564779241',
+                       'win' => 1
+                     }
+                   ],
+          'Cincinnati' => [
+                            {
+                              'x_factor' => '0.674928380456565',
+                              'score' => '690.909463046838',
+                              'opponent' => 'Houston',
+                              'win' => 1
+                            },
+                            {
+                              'x_factor' => '0.674928380456565',
+                              'score' => '690.909463046838',
+                              'opponent' => 'Houston',
+                              'win' => 1
+                            }
+                          ],
+          'Oregon' => [
+                        {
+                          'win' => 1,
+                          'opponent' => 'Arizona',
+                          'score' => '1354.48620634724',
+                          'x_factor' => '0.575660811511032'
+                        },
+                        {
+                          'win' => 1,
+                          'opponent' => 'Arizona',
+                          'score' => '1354.48620634724',
+                          'x_factor' => '0.575660811511032'
+                        }
+                      ]
+        };
+
