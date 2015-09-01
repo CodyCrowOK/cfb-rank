@@ -9,7 +9,7 @@ use Text::CSV;
 use constant e => 2.718281828459;
 
 my $input = "input.csv";
-my $output = "output.csv";
+my $output = "output.txt";
 
 my $columns = {
 	date => 0,
@@ -91,8 +91,30 @@ while (my $row = $csv->getline($fh)) {
         say "\tD-Factor for visitor: " . $v_d_factor;
         say "\tD-Factor for home: " . $h_d_factor;
 
-        say $v_third_down_rate;
-        say $h_third_down_rate;
+        #Calculate the x factor (reward teams for being balanced between o and d)
+
+        my $h_x_factor = ((1 / e) * e**(-((1 / 100) * (abs($h_o_factor - $h_d_factor)))**2) + 1) / 2;
+        my $v_x_factor = ((1 / e) * e**(-((1 / 100) * (abs($v_o_factor - $v_d_factor)))**2) + 1) / 2;
+
+        say "\tX-Factor for visitor: " . $v_x_factor;
+        say "\tX-Factor for home: " . $h_x_factor;
+
+        #Calculate the win factor
+
+        my $h_margin = $row->[$columns->{home_score}] - $row->[$columns->{visitor_score}];
+        my $v_margin = -1 * $h_margin;
+
+        my $h_win_factor = (e ** atan2($h_margin / e**e, 1) + 1);
+        my $v_win_factor = (e ** atan2($v_margin / e**e, 1) + 1);
+
+        say "\tWin Factor for visitor: " . $v_win_factor;
+        say "\tWin Factor for home: " . $h_win_factor;
+
+        my $h_game_score = ($h_o_factor + $h_d_factor) * $h_x_factor * $h_win_factor;
+        my $v_game_score = ($v_o_factor + $v_d_factor) * $v_x_factor * $v_win_factor;
+
+        say "\tGame Score for visitor: " . $v_game_score;
+        say "\tGame Score for home: " . $h_game_score;
 
 
 }
