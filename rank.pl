@@ -51,8 +51,8 @@ my $columns = {
 
 open my $fh, "<", $input or die "$input: $!";
 my $csv = Text::CSV->new({
-	binary    => 1, # Allow special character. Always set this
-	auto_diag => 1, # Report irregularities immediately
+	binary    => 1,
+	auto_diag => 1,
 });
 
 #column names
@@ -61,17 +61,38 @@ $csv->getline($fh);
 while (my $row = $csv->getline($fh)) {
 	say $row->[$columns->{visitor}] . " at " . $row->[$columns->{home}];
 
-        my $rushing_ypc = $row->[$columns->{visitor_rushing_yards}] / $row->[$columns->{visitor_rushing_attempts}];
-        my $passing_ypa = $row->[$columns->{visitor_passing_yards}] / $row->[$columns->{visitor_passing_attempts}];
-        my $total_yards = $row->[$columns->{visitor_rushing_yards}] + $row->[$columns->{visitor_passing_yards}] - $row->[$columns->{visitor_penalty_yards}];
-        my $o_factor = (($rushing_ypc * e**e) + ($passing_ypa * e**2)) * atan2($total_yards, 1);
-        say "\tO-Factor for visitor: " . $o_factor;
+        my $v_rushing_ypc = $row->[$columns->{visitor_rushing_yards}] / $row->[$columns->{visitor_rushing_attempts}];
+        my $v_passing_ypa = $row->[$columns->{visitor_passing_yards}] / $row->[$columns->{visitor_passing_attempts}];
+        #To avoid division by zero
+        $v_rushing_ypc += .0000001;
+        $v_passing_ypa += .0000001;
+        my $v_total_yards = $row->[$columns->{visitor_rushing_yards}] + $row->[$columns->{visitor_passing_yards}] - $row->[$columns->{visitor_penalty_yards}];
+        my $v_o_factor = (($v_rushing_ypc * e**e) + ($v_passing_ypa * e**2)) * atan2($v_total_yards, 1);
+        say "\tO-Factor for visitor: " . $v_o_factor;
 
         my $h_rushing_ypc = $row->[$columns->{home_rushing_yards}] / $row->[$columns->{home_rushing_attempts}];
         my $h_passing_ypa = $row->[$columns->{home_passing_yards}] / $row->[$columns->{home_passing_attempts}];
+        #To avoid division by zero
+        $h_rushing_ypc += .0000001;
+        $h_passing_ypa += .0000001;
         my $h_total_yards = $row->[$columns->{home_rushing_yards}] + $row->[$columns->{home_passing_yards}] - $row->[$columns->{home_penalty_yards}];
         my $h_o_factor = (($h_rushing_ypc * e**e) + ($h_passing_ypa * e**2)) * atan2($h_total_yards, 1);
         say "\tO-Factor for home: " . $h_o_factor;
+
+        my $v_third_down_rate = $row->[$columns->{visitor_third_down_conversions}] / $row->[$columns->{visitor_third_down_attempts}];
+        my $h_third_down_rate = $row->[$columns->{home_third_down_conversions}] / $row->[$columns->{home_third_down_attempts}];
+
+        my $v_3_factor = (e**atan2(1 - $h_third_down_rate, 1)) - (1/e);
+        my $h_3_factor = (e**atan2(1 - $v_third_down_rate, 1)) - (1/e);
+
+        my $v_d_factor = ((e + 1) * ((1 / $h_rushing_ypc) + 1) + (e ** 2) * ((1 / $h_passing_ypa) + (e / 3))) * $v_3_factor * e**e;
+        my $h_d_factor = ((e + 1) * ((1 / $v_rushing_ypc) + 1) + (e ** 2) * ((1 / $v_passing_ypa) + (e / 3))) * $h_3_factor * e**e;
+
+        say "\tD-Factor for visitor: " . $v_d_factor;
+        say "\tD-Factor for home: " . $h_d_factor;
+
+        say $v_third_down_rate;
+        say $h_third_down_rate;
 
 
 }
