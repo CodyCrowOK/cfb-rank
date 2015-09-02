@@ -3,7 +3,9 @@
 use strict;
 use warnings;
 use 5.012;
+use POSIX;
 
+use Cwd;
 use Text::CSV;
 use Data::Dumper;
 
@@ -12,6 +14,9 @@ use constant e => 2.718281828459;
 sub trim;
 sub add_game;
 sub process_file;
+sub generate_rankings;
+sub calculate_sos;
+sub display_rankings;
 
 my $columns = {
 	date => 0,
@@ -52,17 +57,28 @@ my $columns = {
 };
 
 my $teams = {};
-
-#process_file "input.csv";
 my $dir = "data";
+my $cwd = cwd();
+
 opendir(DIR, $dir) or die $!;
 chdir $dir;
+
 while (my $file = readdir(DIR)) {
 	next unless !($file eq "." || $file eq "..");
+	say "Processing " . $file . "...";
 	process_file $file;
+	say "Done.\n";
 }
 
-say Dumper($teams);
+chdir $cwd;
+
+my $sos = calculate_sos $teams;
+
+my $rankings = generate_rankings $teams, $sos;
+
+say Dumper $teams;
+
+display_rankings $teams, $rankings;
 
 sub trim {
 	my $string = $_[0];
@@ -100,7 +116,7 @@ sub process_file {
 	$csv->getline($fh);
 
 	while (my $row = $csv->getline($fh)) {
-		say trim $row->[$columns->{visitor}] . " at " . trim $row->[$columns->{home}];
+		#say trim $row->[$columns->{visitor}] . " at " . trim $row->[$columns->{home}];
 
 	        my $v_rushing_ypc = $row->[$columns->{visitor_rushing_yards}] / $row->[$columns->{visitor_rushing_attempts}];
 	        my $v_passing_ypa = $row->[$columns->{visitor_passing_yards}] / $row->[$columns->{visitor_passing_attempts}];
@@ -109,7 +125,7 @@ sub process_file {
 	        $v_passing_ypa += .0000001;
 	        my $v_total_yards = $row->[$columns->{visitor_rushing_yards}] + $row->[$columns->{visitor_passing_yards}] - $row->[$columns->{visitor_penalty_yards}];
 	        my $v_o_factor = (($v_rushing_ypc * e**e) + ($v_passing_ypa * e**2)) * atan2($v_total_yards, 1);
-	        say "\tO-Factor for visitor: " . $v_o_factor;
+	        #say "\tO-Factor for visitor: " . $v_o_factor;
 
 	        my $h_rushing_ypc = $row->[$columns->{home_rushing_yards}] / $row->[$columns->{home_rushing_attempts}];
 	        my $h_passing_ypa = $row->[$columns->{home_passing_yards}] / $row->[$columns->{home_passing_attempts}];
@@ -118,7 +134,7 @@ sub process_file {
 	        $h_passing_ypa += .0000001;
 	        my $h_total_yards = $row->[$columns->{home_rushing_yards}] + $row->[$columns->{home_passing_yards}] - $row->[$columns->{home_penalty_yards}];
 	        my $h_o_factor = (($h_rushing_ypc * e**e) + ($h_passing_ypa * e**2)) * atan2($h_total_yards, 1);
-	        say "\tO-Factor for home: " . $h_o_factor;
+	        #say "\tO-Factor for home: " . $h_o_factor;
 
 	        my $v_third_down_rate = $row->[$columns->{visitor_third_down_conversions}] / $row->[$columns->{visitor_third_down_attempts}];
 	        my $h_third_down_rate = $row->[$columns->{home_third_down_conversions}] / $row->[$columns->{home_third_down_attempts}];
@@ -129,16 +145,16 @@ sub process_file {
 	        my $v_d_factor = ((e + 1) * ((1 / $h_rushing_ypc) + 1) + (e ** 2) * ((1 / $h_passing_ypa) + (e / 3))) * $v_3_factor * e**e;
 	        my $h_d_factor = ((e + 1) * ((1 / $v_rushing_ypc) + 1) + (e ** 2) * ((1 / $v_passing_ypa) + (e / 3))) * $h_3_factor * e**e;
 
-	        say "\tD-Factor for visitor: " . $v_d_factor;
-	        say "\tD-Factor for home: " . $h_d_factor;
+	        #say "\tD-Factor for visitor: " . $v_d_factor;
+	        #say "\tD-Factor for home: " . $h_d_factor;
 
 	        #Calculate the x factor (reward teams for being balanced between o and d)
 
 	        my $h_x_factor = ((1 / e) * e**(-((1 / 100) * (abs($h_o_factor - $h_d_factor)))**2) + 1) / 2;
 	        my $v_x_factor = ((1 / e) * e**(-((1 / 100) * (abs($v_o_factor - $v_d_factor)))**2) + 1) / 2;
 
-	        say "\tX-Factor for visitor: " . $v_x_factor;
-	        say "\tX-Factor for home: " . $h_x_factor;
+	        #say "\tX-Factor for visitor: " . $v_x_factor;
+	        #say "\tX-Factor for home: " . $h_x_factor;
 
 	        #Calculate the win factor
 
@@ -148,14 +164,14 @@ sub process_file {
 	        my $h_win_factor = (e ** atan2($h_margin / e**e, 1) + 1);
 	        my $v_win_factor = (e ** atan2($v_margin / e**e, 1) + 1);
 
-	        say "\tWin Factor for visitor: " . $v_win_factor;
-	        say "\tWin Factor for home: " . $h_win_factor;
+	        #say "\tWin Factor for visitor: " . $v_win_factor;
+	        #say "\tWin Factor for home: " . $h_win_factor;
 
 	        my $h_game_score = ($h_o_factor + $h_d_factor) * $h_x_factor * $h_win_factor;
 	        my $v_game_score = ($v_o_factor + $v_d_factor) * $v_x_factor * $v_win_factor;
 
-	        say "\tGame Score for visitor: " . $v_game_score;
-	        say "\tGame Score for home: " . $h_game_score;
+	        #say "\tGame Score for visitor: " . $v_game_score;
+	        #say "\tGame Score for home: " . $h_game_score;
 
 		my $v_game = {
 			team => trim ($row->[$columns->{visitor}]),
@@ -178,4 +194,118 @@ sub process_file {
 
 	close $fh;
 
+}
+
+sub calculate_sos {
+	my $teams = shift;
+	my $teams_sos = {};
+
+	foreach my $team (keys $teams) {
+		say $team;
+
+		my @games = @{$teams->{$team}};
+		my @opponents;
+		my $opponent_wins = 0;
+		my $opponent_losses = 0;
+
+		#say Dumper @games;
+
+		foreach my $game (@games) {
+			push @opponents, $game->{opponent};
+		}
+
+		foreach my $opp (@opponents) {
+			say "\t" . $opp;
+
+			my @opp_games = @{$teams->{$opp}};
+			my $wins = 0;
+			my $losses = 0;
+			for my $opp_game (@opp_games) {
+				if ($opp_game->{win}) {
+					$wins += 1;
+				} else {
+					$losses += 1;
+				}
+			}
+
+			say "\t\t" . $wins . "-" . $losses;
+
+			$opponent_wins += $wins;
+			$opponent_losses += $losses;
+		}
+
+
+
+		say "Opp W-L: " . $opponent_wins . "-" . $opponent_losses;
+		say "Opp W%: " . $opponent_wins / ($opponent_losses + $opponent_wins) . "\n";
+
+		#$teams_sos->{$team} = $opponent_wins / ($opponent_losses + $opponent_wins);
+		my $wpercent = $opponent_wins / ($opponent_losses + $opponent_wins);
+		my $sos = 0.5 * atan2(5 * $wpercent, 1) + (2 / e);
+		$teams_sos->{$team} = $sos;
+	}
+
+	return $teams_sos;
+}
+
+sub generate_rankings {
+	my $teams = shift;
+	my $teams_sos = shift;
+
+	my $ballot = {};
+
+	foreach my $team (keys $teams) {
+		my $total_score = 0;
+		my $game_count = 0;
+
+		my @games = @{$teams->{$team}};
+		foreach my $game (@games) {
+			$game_count++;
+			$total_score += $game->{score};
+		}
+
+		my $avg_score = $total_score / $game_count;
+
+		my $votes = $avg_score * $teams_sos->{$team};
+
+		$ballot->{$team} = ceil($votes);
+	}
+
+	return $ballot;
+}
+
+sub _win_loss_record {
+	my $team = shift;
+
+	my @games = @{$team};
+	my $wins = 0;
+	my $losses = 0;
+
+	foreach my $game (@games) {
+		if ($game->{win}) {
+			$wins += 1;
+		} else {
+			$losses += 1;
+		}
+	}
+
+	return $wins . "-" . $losses;
+}
+
+sub display_rankings {
+	say "\n\n\n\n\nRankings\n";
+
+	my $teams = shift;
+	my $hashref = shift;
+	my %rankings = %{$hashref};
+
+	my $i = 0;
+
+	foreach my $team (sort { $rankings{$b} <=> $rankings{$a} } keys %rankings) {
+		$i++;
+
+		my $wlstring = _win_loss_record $teams->{$team};
+
+		printf "%3d. %-30s %6s %5s\n", $i, $team, $wlstring, $rankings{$team};
+	}
 }

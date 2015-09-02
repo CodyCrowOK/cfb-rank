@@ -1,6 +1,8 @@
+Note: Many of these formulas are tweaked in the implementation.
+
 Magic formula:
 Team score for a single game = (O-factor + D-factor) * X-factor * Win factor
-Team score for a season = Sum of all individual game scores * Opp W-L factor?
+Team score for a season = Average of all individual game scores * SOS
 
 #X-factor = arctan(O-factor - D-factor)
 abs(O-factor - D-factor)
@@ -15,5 +17,6 @@ D-factor = ((1 / (rushing yards/carry) + 1) + (1 / (passing yards/attempt) + (e 
 M-V = Score - Opponent's score (negatives allowed)
 Win factor = e^arctan((M-V) / e^e)
 
+SOS = .5 * arctan (e * (Opponent W-L)) + (2 / e)
 
 e = Euler's number
