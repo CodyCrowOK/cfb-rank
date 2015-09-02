@@ -67,9 +67,9 @@ chdir $dir;
 
 while (my $file = readdir(DIR)) {
 	next unless !($file eq "." || $file eq "..");
-	say "Processing " . $file . "...";
+	#say "Processing " . $file . "...";
 	process_file $file;
-	say "Done.\n";
+	#say "Done.\n";
 }
 
 chdir $cwd;
@@ -78,7 +78,7 @@ my $sos = calculate_sos $teams;
 
 my $rankings = generate_rankings $teams, $sos;
 
-say Dumper $teams;
+#say Dumper $teams;
 
 display_rankings $teams, $rankings;
 
@@ -125,7 +125,7 @@ sub process_file {
 	        #To avoid division by zero
 	        $v_rushing_ypc += .0000001;
 	        $v_passing_ypa += .0000001;
-	        my $v_total_yards = $row->[$columns->{visitor_rushing_yards}] + $row->[$columns->{visitor_passing_yards}] - $row->[$columns->{visitor_penalty_yards}];
+	        my $v_total_yards = $row->[$columns->{visitor_rushing_yards}] + $row->[$columns->{visitor_passing_yards}];
 	        my $v_o_factor = (($v_rushing_ypc * e**e) + ($v_passing_ypa * e**2)) * atan2($v_total_yards, 1);
 	        #say "\tO-Factor for visitor: " . $v_o_factor;
 
@@ -134,7 +134,7 @@ sub process_file {
 	        #To avoid division by zero
 	        $h_rushing_ypc += .0000001;
 	        $h_passing_ypa += .0000001;
-	        my $h_total_yards = $row->[$columns->{home_rushing_yards}] + $row->[$columns->{home_passing_yards}] - $row->[$columns->{home_penalty_yards}];
+	        my $h_total_yards = $row->[$columns->{home_rushing_yards}] + $row->[$columns->{home_passing_yards}];
 	        my $h_o_factor = (($h_rushing_ypc * e**e) + ($h_passing_ypa * e**2)) * atan2($h_total_yards, 1);
 	        #say "\tO-Factor for home: " . $h_o_factor;
 
@@ -208,7 +208,7 @@ sub calculate_sos {
 	my $teams_sos = {};
 
 	foreach my $team (keys $teams) {
-		say $team;
+		#say $team;
 
 		my @games = @{$teams->{$team}};
 		my @opponents;
@@ -225,7 +225,7 @@ sub calculate_sos {
 		}
 
 		foreach my $opp (@opponents) {
-			say "\t" . $opp;
+			#say "\t" . $opp;
 
 			my @opp_games = @{$teams->{$opp}};
 			my $wins = 0;
@@ -238,7 +238,7 @@ sub calculate_sos {
 				}
 			}
 
-			say "\t\t" . $wins . "-" . $losses;
+			#say "\t\t" . $wins . "-" . $losses;
 
 			$opponent_wins += $wins;
 			$opponent_losses += $losses;
@@ -267,8 +267,8 @@ sub calculate_sos {
 		}
 
 
-		say "Opp W-L: " . $opponent_wins . "-" . $opponent_losses;
-		say "Opp W%: " . $opponent_wins / ($opponent_losses + $opponent_wins) . "\n";
+		#say "Opp W-L: " . $opponent_wins . "-" . $opponent_losses;
+		#say "Opp W%: " . $opponent_wins / ($opponent_losses + $opponent_wins) . "\n";
 
 		my $wpercent = $opponent_wins / ($opponent_losses + $opponent_wins);
 
@@ -276,9 +276,9 @@ sub calculate_sos {
 
 		my $adjusted_percent = ($wpercent + $opp_opp_wpercent) / 3;
 
-		my $sos = atan2(e**e * $adjusted_percent, 1) + (2 / e);
+		my $sos = atan2(5 * ($adjusted_percent - .2), 1) + 1/2;
 
-		say $sos;
+		#say $sos;
 
 		$teams_sos->{$team} = $sos;
 	}
@@ -305,7 +305,7 @@ sub generate_rankings {
 		my $avg_score = $total_score / $game_count;
 
 		my $votes_quarter = $avg_score * $teams_sos->{$team};
-		my $votes = (3 * $votes_quarter + ($votes_quarter * _win_percentage $teams->{$team})) / 4;
+		my $votes = (2 * $votes_quarter + 2 * ($votes_quarter * _win_percentage $teams->{$team})) / 4;
 
 		$ballot->{$team} = ceil($votes);
 	}
@@ -368,7 +368,7 @@ sub _games {
 }
 
 sub display_rankings {
-	say "\n\n\n\n\nRankings\n";
+	say "\nRankings\n";
 
 	my $teams = shift;
 	my $hashref = shift;

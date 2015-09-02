@@ -28,18 +28,18 @@ Rankings
  25. Arizona                          10-3   837
  26. Texas A&M                         7-5   819
  27. Louisiana Tech                    8-5   812
- 28. UCLA                              9-3   810
+ 28. UCLA                              9-3   809
  29. Arizona State                     9-3   800
  30. Navy                              7-5   795
  31. USC                               8-4   792
  32. Louisville                        9-3   769
- 33. Missouri                         10-3   764
+ 33. Missouri                         10-3   763
  34. North Carolina State              7-5   759
  35. Georgia Southern                  9-3   758
  36. Florida                           6-5   757
  37. BYU                               8-4   755
- 38. Memphis                           9-3   747
- 39. Minnesota                         8-4   744
+ 38. Minnesota                         8-4   744
+ 39. Memphis                           9-3   743
  40. Cincinnati                        9-3   742
  41. Air Force                         9-3   739
  42. Toledo                            8-4   729
@@ -74,7 +74,7 @@ Rankings
  71. San Diego State                   7-5   552
  72. Kentucky                          5-7   551
  73. Virginia                          5-7   548
- 74. Houston                           7-5   547
+ 74. Houston                           7-5   546
  75. UTEP                              7-5   533
  76. Michigan                          5-7   530
  77. North Carolina                    6-6   529
@@ -84,8 +84,8 @@ Rankings
  81. Texas State                       7-5   497
  82. Temple                            6-6   496
  83. Central Michigan                  7-5   489
- 84. Illinois                          6-6   487
- 85. Indiana                           4-8   487
+ 84. Indiana                           4-8   487
+ 85. Illinois                          6-6   487
  86. South Alabama                     6-6   474
  87. Ohio                              6-6   461
  88. Buffalo                           5-6   459
@@ -95,8 +95,8 @@ Rankings
  92. Texas Tech                        4-8   446
  93. Old Dominion                      6-6   437
  94. New Mexico                        4-8   424
- 95. Florida International             4-8   414
- 96. Wyoming                           4-8   413
+ 95. Florida International             4-8   413
+ 96. Wyoming                           4-8   412
  97. Syracuse                          3-9   404
  98. Army                              4-8   394
  99. Purdue                            3-9   383
@@ -106,9 +106,9 @@ Rankings
 103. Tulane                            3-9   352
 104. Kansas                            3-9   351
 105. North Texas                       4-8   336
-106. South Florida                     4-8   335
-107. Troy                              3-9   333
-108. Colorado                         2-10   331
+106. South Florida                     4-8   334
+107. Troy                              3-9   332
+108. Colorado                         2-10   330
 109. Southern Mississippi              3-9   324
 110. Hawai'i                           4-9   312
 111. Vanderbilt                        3-9   310
@@ -118,7 +118,7 @@ Rankings
 115. Tulsa                            2-10   282
 116. Kent State                        2-9   280
 117. UNLV                             2-11   273
-118. Louisiana-Monroe                  4-8   273
+118. Louisiana-Monroe                  4-8   272
 119. Wake Forest                       3-9   270
 120. Connecticut                      2-10   262
 121. New Mexico State                 2-10   258
