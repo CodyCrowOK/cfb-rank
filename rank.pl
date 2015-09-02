@@ -165,8 +165,8 @@ sub process_file {
 	        my $h_margin = $row->[$columns->{home_score}] - $row->[$columns->{visitor_score}];
 	        my $v_margin = -1 * $h_margin;
 
-	        my $h_win_factor = (e ** atan2($h_margin / e, 1) + 1);
-	        my $v_win_factor = (e ** atan2($v_margin / e, 1) + 1);
+	        my $h_win_factor = (e ** atan2($h_margin / e**e, 1) + 1);
+	        my $v_win_factor = (e ** atan2($v_margin / e**e, 1) + 1);
 
 	        #say "\tWin Factor for visitor: " . $v_win_factor;
 	        #say "\tWin Factor for home: " . $h_win_factor;
@@ -215,6 +215,9 @@ sub calculate_sos {
 		my $opponent_wins = 0;
 		my $opponent_losses = 0;
 
+		my $opp_opp_wins = 0;
+		my $opp_opp_losses = 0;
+
 		#say Dumper @games;
 
 		foreach my $game (@games) {
@@ -241,14 +244,42 @@ sub calculate_sos {
 			$opponent_losses += $losses;
 		}
 
+		#figure up the opp opp w%
+		foreach my $opp (@opponents) {
+			my @opp_games = @{$teams->{$opp}};
+			my @opp_opponents;
+
+			foreach my $game (@opp_games) {
+				push @opp_opponents, $game->{opponent};
+			}
+
+			foreach my $opp_opp (@opp_opponents) {
+				my @opp_opp_games = @{$teams->{$opp}};
+				foreach my $opp_opp_game (@opp_opp_games) {
+					if ($opp_opp_game->{win}) {
+						$opp_opp_wins++;
+					} else {
+						$opp_opp_losses++;
+					}
+				}
+			}
+
+		}
 
 
 		say "Opp W-L: " . $opponent_wins . "-" . $opponent_losses;
 		say "Opp W%: " . $opponent_wins / ($opponent_losses + $opponent_wins) . "\n";
 
-		#$teams_sos->{$team} = $opponent_wins / ($opponent_losses + $opponent_wins);
 		my $wpercent = $opponent_wins / ($opponent_losses + $opponent_wins);
-		my $sos = 0.5 * atan2(e * $wpercent, 1) + (2 / e);
+
+		my $opp_opp_wpercent = $opp_opp_wins / ($opp_opp_wins + $opp_opp_losses);
+
+		my $adjusted_percent = ($wpercent + $opp_opp_wpercent) / 3;
+
+		my $sos = atan2(e**e * $adjusted_percent, 1) + (2 / e);
+
+		say $sos;
+
 		$teams_sos->{$team} = $sos;
 	}
 
@@ -273,7 +304,8 @@ sub generate_rankings {
 
 		my $avg_score = $total_score / $game_count;
 
-		my $votes = $avg_score * $teams_sos->{$team} * _win_percentage $teams->{$team};
+		my $votes_quarter = $avg_score * $teams_sos->{$team};
+		my $votes = (3 * $votes_quarter + ($votes_quarter * _win_percentage $teams->{$team})) / 4;
 
 		$ballot->{$team} = ceil($votes);
 	}
