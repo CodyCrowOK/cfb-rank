@@ -17,6 +17,8 @@ sub process_file;
 sub generate_rankings;
 sub calculate_sos;
 sub display_rankings;
+sub _win_loss_record;
+sub _win_percentage;
 
 my $columns = {
 	date => 0,
@@ -138,6 +140,8 @@ sub process_file {
 
 	        my $v_third_down_rate = $row->[$columns->{visitor_third_down_conversions}] / $row->[$columns->{visitor_third_down_attempts}];
 	        my $h_third_down_rate = $row->[$columns->{home_third_down_conversions}] / $row->[$columns->{home_third_down_attempts}];
+		$v_third_down_rate += .0000001;
+		$h_third_down_rate += .0000001;
 
 	        my $v_3_factor = (e**atan2(1 - $h_third_down_rate, 1)) - (1/e);
 	        my $h_3_factor = (e**atan2(1 - $v_third_down_rate, 1)) - (1/e);
@@ -161,14 +165,17 @@ sub process_file {
 	        my $h_margin = $row->[$columns->{home_score}] - $row->[$columns->{visitor_score}];
 	        my $v_margin = -1 * $h_margin;
 
-	        my $h_win_factor = (e ** atan2($h_margin / e**e, 1) + 1);
-	        my $v_win_factor = (e ** atan2($v_margin / e**e, 1) + 1);
+	        my $h_win_factor = (e ** atan2($h_margin / e, 1) + 1);
+	        my $v_win_factor = (e ** atan2($v_margin / e, 1) + 1);
 
 	        #say "\tWin Factor for visitor: " . $v_win_factor;
 	        #say "\tWin Factor for home: " . $h_win_factor;
 
 	        my $h_game_score = ($h_o_factor + $h_d_factor) * $h_x_factor * $h_win_factor;
 	        my $v_game_score = ($v_o_factor + $v_d_factor) * $v_x_factor * $v_win_factor;
+		$h_game_score = abs($h_game_score);
+		$v_game_score = abs($v_game_score);
+
 
 	        #say "\tGame Score for visitor: " . $v_game_score;
 	        #say "\tGame Score for home: " . $h_game_score;
@@ -241,7 +248,7 @@ sub calculate_sos {
 
 		#$teams_sos->{$team} = $opponent_wins / ($opponent_losses + $opponent_wins);
 		my $wpercent = $opponent_wins / ($opponent_losses + $opponent_wins);
-		my $sos = 0.5 * atan2(5 * $wpercent, 1) + (2 / e);
+		my $sos = 0.5 * atan2(e * $wpercent, 1) + (2 / e);
 		$teams_sos->{$team} = $sos;
 	}
 
@@ -266,12 +273,30 @@ sub generate_rankings {
 
 		my $avg_score = $total_score / $game_count;
 
-		my $votes = $avg_score * $teams_sos->{$team};
+		my $votes = $avg_score * $teams_sos->{$team} * _win_percentage $teams->{$team};
 
 		$ballot->{$team} = ceil($votes);
 	}
 
 	return $ballot;
+}
+
+sub _win_percentage {
+	my $team = shift;
+
+	my @games = @{$team};
+	my $wins = 0;
+	my $losses = 0;
+
+	foreach my $game (@games) {
+		if ($game->{win}) {
+			$wins += 1;
+		} else {
+			$losses += 1;
+		}
+	}
+
+	return $wins / ($wins + $losses);
 }
 
 sub _win_loss_record {
@@ -292,6 +317,24 @@ sub _win_loss_record {
 	return $wins . "-" . $losses;
 }
 
+sub _games {
+	my $team = shift;
+
+	my @games = @{$team};
+	my $wins = 0;
+	my $losses = 0;
+
+	foreach my $game (@games) {
+		if ($game->{win}) {
+			$wins += 1;
+		} else {
+			$losses += 1;
+		}
+	}
+
+	return $wins + $losses;
+}
+
 sub display_rankings {
 	say "\n\n\n\n\nRankings\n";
 
@@ -300,8 +343,20 @@ sub display_rankings {
 	my %rankings = %{$hashref};
 
 	my $i = 0;
+	my $hi = 0;
 
 	foreach my $team (sort { $rankings{$b} <=> $rankings{$a} } keys %rankings) {
+#		next unless _games($teams->{$team})
+		if (_games($teams->{$team}) > $hi) {
+			$hi = _games($teams->{$team});
+		}
+		my $diff = abs(_games($teams->{$team}) - $hi);
+		if (!($diff == _games($teams->{$team}) || $diff < 5)) {
+			next;
+		}
+
+		next unless $rankings{$team} < 100000;
+
 		$i++;
 
 		my $wlstring = _win_loss_record $teams->{$team};
