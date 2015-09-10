@@ -59,7 +59,7 @@ my $columns = {
 };
 
 my $teams = {};
-my $dir = "data";
+my $dir = "data2015";
 my $cwd = cwd();
 
 opendir(DIR, $dir) or die $!;
@@ -298,6 +298,9 @@ sub generate_rankings {
 
 		my @games = @{$teams->{$team}};
 		foreach my $game (@games) {
+			if ($game->{score} > 100000) {
+				next;
+			}
 			$game_count++;
 			$total_score += $game->{score};
 		}
@@ -377,7 +380,9 @@ sub display_rankings {
 	my $i = 0;
 	my $hi = 0;
 
-	foreach my $team (sort { $rankings{$b} <=> $rankings{$a} } keys %rankings) {
+	#say Dumper $teams;
+
+	foreach my $team (sort { abs($rankings{$b}) <=> abs($rankings{$a}) } keys %rankings) {
 #		next unless _games($teams->{$team})
 		if (_games($teams->{$team}) > $hi) {
 			$hi = _games($teams->{$team});
@@ -387,12 +392,12 @@ sub display_rankings {
 			next;
 		}
 
-		next unless $rankings{$team} < 100000;
+		#next unless $rankings{$team} < 100000;
 
 		$i++;
 
 		my $wlstring = _win_loss_record $teams->{$team};
 
-		printf "%3d. %-30s %6s %5s\n", $i, $team, $wlstring, $rankings{$team};
+		printf "%3d. %-30s %6s %5s\n", $i, $team, $wlstring, abs($rankings{$team});
 	}
 }

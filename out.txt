@@ -1,129 +1,125 @@
 
 Rankings
 
-  1. Ohio State                       12-1  1415
-  2. Oregon                           12-1  1372
-  3. Michigan State                   10-2  1243
-  4. Alabama                          12-1  1205
-  5. Wisconsin                        10-3  1184
-  6. Georgia                           9-3  1156
-  7. TCU                              11-1  1146
-  8. Marshall                         12-1  1123
-  9. Mississippi State                10-2  1120
- 10. Baylor                           11-1  1088
- 11. Boise State                      11-2  1074
- 12. Auburn                            8-4  1041
- 13. Nebraska                          9-3   996
- 14. Georgia Tech                     10-3   989
- 15. Clemson                           9-3   977
- 16. Florida State                    13-0   932
- 17. Oklahoma                          8-4   919
- 18. Kansas State                      9-3   917
- 19. Arkansas                          6-6   913
- 20. LSU                               8-4   910
- 21. West Virginia                     7-5   895
- 22. Miami (Florida)                   6-6   848
- 23. Colorado State                   10-2   844
- 24. Stanford                          7-5   841
- 25. Arizona                          10-3   837
- 26. Texas A&M                         7-5   819
- 27. Louisiana Tech                    8-5   812
- 28. UCLA                              9-3   810
- 29. Arizona State                     9-3   800
- 30. Navy                              7-5   795
- 31. USC                               8-4   792
- 32. Louisville                        9-3   769
- 33. Missouri                         10-3   764
- 34. North Carolina State              7-5   759
- 35. Georgia Southern                  9-3   758
- 36. Florida                           6-5   757
- 37. BYU                               8-4   755
- 38. Memphis                           9-3   747
- 39. Minnesota                         8-4   744
- 40. Cincinnati                        9-3   742
- 41. Air Force                         9-3   739
- 42. Toledo                            8-4   729
- 43. Boston College                    7-5   722
- 44. Utah State                        9-4   713
- 45. Western Michigan                  8-4   694
- 46. Louisiana-Lafayette               8-4   693
- 47. Notre Dame                        7-5   679
- 48. Utah                              8-4   663
- 49. South Carolina                    6-6   655
- 50. Washington                        8-5   646
- 51. Western Kentucky                  7-5   636
- 52. Pittsburgh                        6-6   635
- 53. Rutgers                           7-5   626
- 54. Northern Illinois                11-2   624
- 55. UCF                               9-3   618
- 56. East Carolina                     8-4   615
- 57. Penn State                        6-6   614
- 58. Texas                             6-6   608
- 59. Duke                              9-3   606
- 60. Tennessee                         6-6   599
- 61. Maryland                          7-5   595
- 62. Middle Tennessee                  6-6   590
- 63. Arkansas State                    7-5   586
- 64. UAB                               6-6   578
- 65. Rice                              7-5   573
- 66. Virginia Tech                     6-6   568
- 67. Nevada                            7-5   568
- 68. Iowa                              7-5   567
- 69. Appalachian State                 7-5   563
- 70. Oklahoma State                    6-6   556
- 71. San Diego State                   7-5   552
- 72. Kentucky                          5-7   551
- 73. Virginia                          5-7   548
- 74. Houston                           7-5   547
- 75. UTEP                              7-5   533
- 76. Michigan                          5-7   530
- 77. North Carolina                    6-6   529
- 78. California                        5-7   525
- 79. Fresno State                      6-7   521
- 80. Bowling Green                     7-6   519
- 81. Texas State                       7-5   497
- 82. Temple                            6-6   496
- 83. Central Michigan                  7-5   489
- 84. Illinois                          6-6   487
- 85. Indiana                           4-8   487
- 86. South Alabama                     6-6   474
- 87. Ohio                              6-6   461
- 88. Buffalo                           5-6   459
- 89. Northwestern                      5-7   457
- 90. Ball State                        5-7   453
- 91. Oregon State                      5-7   447
- 92. Texas Tech                        4-8   446
- 93. Old Dominion                      6-6   437
- 94. New Mexico                        4-8   424
- 95. Florida International             4-8   414
- 96. Wyoming                           4-8   413
- 97. Syracuse                          3-9   404
- 98. Army                              4-8   394
- 99. Purdue                            3-9   383
-100. Florida Atlantic                  3-9   381
-101. San Jose State                    3-9   365
-102. Washington State                  3-9   358
-103. Tulane                            3-9   352
-104. Kansas                            3-9   351
-105. North Texas                       4-8   336
-106. South Florida                     4-8   335
-107. Troy                              3-9   333
-108. Colorado                         2-10   331
-109. Southern Mississippi              3-9   324
-110. Hawai'i                           4-9   312
-111. Vanderbilt                        3-9   310
-112. UTSA                              4-8   306
-113. Iowa State                       2-10   295
-114. Miami (Ohio)                     2-10   288
-115. Tulsa                            2-10   282
-116. Kent State                        2-9   280
-117. UNLV                             2-11   273
-118. Louisiana-Monroe                  4-8   273
-119. Wake Forest                       3-9   270
-120. Connecticut                      2-10   262
-121. New Mexico State                 2-10   258
-122. Eastern Michigan                 2-10   255
-123. Massachusetts                     3-9   251
-124. Georgia State                    1-11   239
-125. Idaho                            1-10   236
-126. SMU                              1-11   213
+  1. Ole Miss                          1-0   648
+  2. S Illinois                        0-1   558
+  3. LA Tech                           1-0   534
+  4. Air Force                         1-0   514
+  5. USF                               1-0   511
+  6. FSU                               1-0   510
+  7. Colorado State                    1-0   504
+  8. Georgia                           1-0   492
+  9. Appalachian St                    1-0   482
+ 10. New Mexico                        1-0   481
+ 11. West Virginia                     1-0   480
+ 12. Navy                              1-0   474
+ 13. Kansas                            0-1   473
+ 14. USC                               1-0   470
+ 15. Memphis                           1-0   469
+ 16. Rice                              1-0   443
+ 17. FAU                               0-1   439
+ 18. Florida                           1-0   436
+ 19. Mid Tennessee                     1-0   435
+ 20. Miami (FL)                        1-0   433
+ 21. Cal                               1-0   426
+ 22. Arkansas                          1-0   424
+ 23. Notre Dame                        1-0   417
+ 24. Cincinnati                        1-0   415
+ 25. E Michigan                        0-1   407
+ 26. Tennessee                         1-0   404
+ 27. Maryland                          1-0   398
+ 28. Houston                           1-0   390
+ 29. Clemson                           1-0   381
+ 30. LA-Lafayette                      0-1   381
+ 31. Buffalo                           1-0   376
+ 32. Boston College                    1-0   371
+ 33. Sam Houston                       0-1   366
+ 34. Nebraska                          0-1   362
+ 35. Youngstown St                     0-1   359
+ 36. Louisville                        0-1   356
+ 37. Miami (OH)                        1-0   353
+ 38. UNLV                              0-1   352
+ 39. Towson                            0-1   349
+ 40. Kansas State                      1-0   349
+ 41. Illinois                          1-0   348
+ 42. Alabama                           1-0   348
+ 43. Troy                              0-1   347
+ 44. Oregon                            1-0   339
+ 45. Oklahoma                          1-0   338
+ 46. Miss St                           1-0   336
+ 47. Washington St                     0-1   331
+ 48. San Diego State                   1-0   312
+ 49. Missouri                          1-0   309
+ 50. Purdue                            0-1   307
+ 51. North Carolina St                 1-0   306
+ 52. E Washington                      0-1   304
+ 53. UCLA                              1-0   297
+ 54. Bowling Green                     0-1   294
+ 55. Iowa                              1-0   293
+ 56. Gardner-Webb                      0-1   291
+ 57. South Alabama                     1-0   289
+ 58. Presbyterian                      0-1   280
+ 59. Pitt                              1-0   280
+ 60. Oregon State                      1-0   276
+ 61. Wyoming                           0-1   271
+ 62. Tennessee Tech                    0-1   267
+ 63. Southern Miss                     0-1   266
+ 64. UVA                               0-1   264
+ 65. Texas A&M                         1-0   262
+ 66. Stanford                          0-1   260
+ 67. Washington                        0-1   257
+ 68. N Illinois                        1-0   256
+ 69. Iowa State                        1-0   255
+ 70. Northern Iowa                     0-1   254
+ 71. Texas Tech                        1-0   254
+ 72. Arkansas State                    0-1   254
+ 73. Albany (N.Y.)                     0-1   254
+ 74. Kentucky                          1-0   253
+ 75. Colgate                           0-1   250
+ 76. Grambling St                      0-1   249
+ 77. Temple                            1-0   247
+ 78. Wagner                            0-1   243
+ 79. Marshall                          1-0   239
+ 80. Weber State                       0-1   234
+ 81. Penn State                        0-1   232
+ 82. Richmond                          0-1   231
+ 83. North Dakota                      1-0   230
+ 84. Texas State                       0-1   228
+ 85. Wisconsin                         0-1   227
+ 86. UT Martin                         0-1   226
+ 87. ECU                               1-0   224
+ 88. Illinois State                    0-1   223
+ 89. UTEP                              0-1   223
+ 90. Southern                          0-1   223
+ 91. Akron                             0-1   217
+ 92. Arizona State                     0-1   217
+ 93. South Dakota                      0-1   215
+ 94. UL Monroe                         0-1   213
+ 95. SE Missouri St                    0-1   212
+ 96. Wofford                           0-1   211
+ 97. Alabama A&M                       0-1   211
+ 98. Ga Southern                       0-1   210
+ 99. New Mexico St                     0-1   210
+100. BYU                               1-0   209
+101. Tulsa                             1-0   207
+102. Kent State                        0-1   206
+103. San Diego                         0-1   198
+104. Auburn                            1-0   196
+105. Jackson State                     0-1   194
+106. Northwestern                      1-0   190
+107. Texas                             0-1   188
+108. South Dakota St                   1-0   187
+109. Old Dominion                      1-0   186
+110. Bethune-Cookman                   0-1   184
+111. Portland State                    1-0   184
+112. Howard                            0-1   183
+113. Morgan State                      0-1   173
+114. Florida A&M                       0-1   170
+115. Savannah State                    0-1   168
+116. Maine                             0-1   160
+117. Norfolk State                     0-1   159
+118. Indiana                           1-0   157
+119. Boise State                       1-0   155
+120. Mississippi Valley State          0-1   145
+121. Missouri State                    0-1   144
+122. Rutgers                           1-0    29
