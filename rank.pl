@@ -17,6 +17,8 @@ sub process_file;
 sub generate_rankings;
 sub calculate_sos;
 sub display_rankings;
+sub process_matchups;
+sub output_rankings;
 sub _win_loss_record;
 sub _win_percentage;
 
@@ -58,8 +60,15 @@ my $columns = {
 	home_score => 34,
 };
 
+my $output_csv;
+{
+	no warnings;
+	$output_csv = !!(shift eq "csv");
+}
+
 my $teams = {};
 my $dir = "data2015";
+my $matchup_dir = "matchups";
 my $cwd = cwd();
 
 opendir(DIR, $dir) or die $!;
@@ -80,7 +89,18 @@ my $rankings = generate_rankings $teams, $sos;
 
 #say Dumper $teams;
 
-display_rankings $teams, $rankings;
+display_rankings $teams, $rankings unless $output_csv;
+output_rankings $teams, $rankings if $output_csv;
+
+opendir(MATCHUPDIR, $matchup_dir) or die $!;
+chdir $matchup_dir;
+
+while (my $file = readdir(MATCHUPDIR)) {
+	next unless !($file eq "." || $file eq "..");
+#	process_matchups $file, $rankings;
+}
+
+chdir $cwd;
 
 sub trim {
 	my $string = $_[0];
@@ -129,8 +149,8 @@ sub process_file {
 	        my $v_o_factor = (($v_rushing_ypc * e**e) + ($v_passing_ypa * e**2)) * atan2($v_total_yards, 1);
 	        #say "\tO-Factor for visitor: " . $v_o_factor;
 
-	        my $h_rushing_ypc = $row->[$columns->{home_rushing_yards}] / $row->[$columns->{home_rushing_attempts}];
-	        my $h_passing_ypa = $row->[$columns->{home_passing_yards}] / $row->[$columns->{home_passing_attempts}];
+	        my $h_rushing_ypc = $row->[$columns->{home_rushing_yards}] / ($row->[$columns->{home_rushing_attempts}] + .0000001);
+	        my $h_passing_ypa = $row->[$columns->{home_passing_yards}] / ($row->[$columns->{home_passing_attempts}] + .0000001);
 	        #To avoid division by zero
 	        $h_rushing_ypc += .0000001;
 	        $h_passing_ypa += .0000001;
@@ -138,8 +158,8 @@ sub process_file {
 	        my $h_o_factor = (($h_rushing_ypc * e**e) + ($h_passing_ypa * e**2)) * atan2($h_total_yards, 1);
 	        #say "\tO-Factor for home: " . $h_o_factor;
 
-	        my $v_third_down_rate = $row->[$columns->{visitor_third_down_conversions}] / $row->[$columns->{visitor_third_down_attempts}];
-	        my $h_third_down_rate = $row->[$columns->{home_third_down_conversions}] / $row->[$columns->{home_third_down_attempts}];
+	        my $v_third_down_rate = $row->[$columns->{visitor_third_down_conversions}] / ($row->[$columns->{visitor_third_down_attempts}] + .0000001);
+	        my $h_third_down_rate = $row->[$columns->{home_third_down_conversions}] / ($row->[$columns->{home_third_down_attempts}] + .0000001);
 		$v_third_down_rate += .0000001;
 		$h_third_down_rate += .0000001;
 
@@ -165,8 +185,8 @@ sub process_file {
 	        my $h_margin = $row->[$columns->{home_score}] - $row->[$columns->{visitor_score}];
 	        my $v_margin = -1 * $h_margin;
 
-	        my $h_win_factor = (e ** atan2($h_margin / e**e, 1) + 1);
-	        my $v_win_factor = (e ** atan2($v_margin / e**e, 1) + 1);
+	        my $h_win_factor = ((e ** atan2($h_margin / e**e, 1)) + 1);
+	        my $v_win_factor = ((e ** atan2($v_margin / e**e, 1)) + 1);
 
 	        #say "\tWin Factor for visitor: " . $v_win_factor;
 	        #say "\tWin Factor for home: " . $h_win_factor;
@@ -221,6 +241,8 @@ sub calculate_sos {
 		#say Dumper @games;
 
 		foreach my $game (@games) {
+			#say Dumper $team;
+			#say Dumper $game;
 			push @opponents, $game->{opponent};
 		}
 
@@ -231,6 +253,11 @@ sub calculate_sos {
 			my $wins = 0;
 			my $losses = 0;
 			for my $opp_game (@opp_games) {
+				#say "Opp: " . Dumper $opp;
+				#say "Team: " . Dumper $team;
+				#say Dumper $opp_game;
+				if ($opp_game->{opponent} eq $team) { next; }
+
 				if ($opp_game->{win}) {
 					$wins += 1;
 				} else {
@@ -277,8 +304,10 @@ sub calculate_sos {
 		my $adjusted_percent = ($wpercent + $opp_opp_wpercent) / 3;
 
 		my $sos = atan2(5 * ($adjusted_percent - .2), 1) + 1/2;
+		$sos = 2 if $sos > 2;
+		$sos = .25 if $sos < .25;
 
-		#say $sos;
+	#say $team . "," . $sos;
 
 		$teams_sos->{$team} = $sos;
 	}
@@ -330,6 +359,7 @@ sub _win_percentage {
 			$losses += 1;
 		}
 	}
+	$losses = $losses * e ** ($losses);
 
 	return $wins / ($wins + $losses);
 }
@@ -370,6 +400,33 @@ sub _games {
 	return $wins + $losses;
 }
 
+sub output_rankings {
+	my $teams = shift;
+	my $hashref = shift;
+	my %rankings = %{$hashref};
+
+	my $i = 0;
+	my $hi = 0;
+
+	say "Team,Rank,Record,Score";
+
+	foreach my $team (sort { abs($rankings{$b}) <=> abs($rankings{$a}) } keys %rankings) {
+		if (_games($teams->{$team}) > $hi) {
+			$hi = _games($teams->{$team});
+		}
+		my $diff = abs(_games($teams->{$team}) - $hi);
+		if (!($diff == _games($teams->{$team}) || $diff < 5)) {
+			next;
+		}
+
+		$i++;
+
+		my $wlstring = _win_loss_record $teams->{$team};
+
+		printf "%s,%d,%s,%s\n", $team, $i, $wlstring, abs($rankings{$team});
+	}
+}
+
 sub display_rankings {
 	say "\nRankings\n";
 
@@ -398,6 +455,26 @@ sub display_rankings {
 
 		my $wlstring = _win_loss_record $teams->{$team};
 
-		printf "%3d. %-30s %6s %5s\n", $i, $team, $wlstring, abs($rankings{$team});
+		printf "    %3d. %-30s %6s %5s\n", $i, $team, $wlstring, abs($rankings{$team});
 	}
+}
+
+sub process_matchups {
+	my $input = shift;
+	my $rankings = shift;
+
+
+
+	open my $fh, "<", $input or die "$input: $!";
+	my $csv = Text::CSV->new({
+		binary    => 1,
+		auto_diag => 1,
+	});
+
+	while (my $row = $csv->getline($fh)) {
+		my $A = trim $row->[0];
+		my $B = trim $row->[1];
+		say $A . " vs " . $B;
+	}
+
 }

@@ -1,4 +1,4 @@
-Note: Many of these formulas are tweaked in the implementation.
+Note: This is not exactly how the program is implemented.
 
 Magic formula:
 Team score for a single game = (O-factor + D-factor) * X-factor * Win factor
