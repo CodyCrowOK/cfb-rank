@@ -67,7 +67,7 @@ my $output_csv;
 }
 
 my $teams = {};
-my $dir = "data2015";
+my $dir = "data2016";
 my $matchup_dir = "matchups";
 my $cwd = cwd();
 
@@ -297,7 +297,7 @@ sub calculate_sos {
 		#say "Opp W-L: " . $opponent_wins . "-" . $opponent_losses;
 		#say "Opp W%: " . $opponent_wins / ($opponent_losses + $opponent_wins) . "\n";
 
-		my $wpercent = $opponent_wins / ($opponent_losses + $opponent_wins);
+		my $wpercent = $opponent_wins / ($opponent_losses + $opponent_wins + .0000001);
 
 		my $opp_opp_wpercent = $opp_opp_wins / ($opp_opp_wins + $opp_opp_losses);
 
