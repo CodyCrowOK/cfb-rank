@@ -67,8 +67,7 @@ my $output_csv;
 }
 
 my $teams = {};
-my $dir = "data2016";
-my $matchup_dir = "matchups";
+my $dir = "data2017";
 my $cwd = cwd();
 
 opendir(DIR, $dir) or die $!;
@@ -92,14 +91,6 @@ my $rankings = generate_rankings $teams, $sos;
 display_rankings $teams, $rankings unless $output_csv;
 output_rankings $teams, $rankings if $output_csv;
 
-opendir(MATCHUPDIR, $matchup_dir) or die $!;
-chdir $matchup_dir;
-
-while (my $file = readdir(MATCHUPDIR)) {
-	next unless !($file eq "." || $file eq "..");
-#	process_matchups $file, $rankings;
-}
-
 chdir $cwd;
 
 sub trim {
@@ -115,7 +106,7 @@ sub add_game {
 	my $teams = shift;
 	foreach my $game (@_) {
 		$teams->{$game->{team}} = [] unless ($teams->{$game->{team}});
-		push $teams->{$game->{team}}, {
+		push @{$teams->{$game->{team}}}, {
 			opponent => $game->{opponent},
 			win => $game->{win},
 			score => $game->{score},
@@ -227,7 +218,7 @@ sub calculate_sos {
 	my $teams = shift;
 	my $teams_sos = {};
 
-	foreach my $team (keys $teams) {
+	foreach my $team (keys %{$teams}) {
 		#say $team;
 
 		my @games = @{$teams->{$team}};
@@ -321,7 +312,7 @@ sub generate_rankings {
 
 	my $ballot = {};
 
-	foreach my $team (keys $teams) {
+	foreach my $team (keys %{$teams}) {
 		my $total_score = 0;
 		my $game_count = 0;
 
@@ -334,7 +325,7 @@ sub generate_rankings {
 			$total_score += $game->{score};
 		}
 
-		my $avg_score = $total_score / $game_count;
+		my $avg_score = $total_score / ($game_count + .0000001);
 
 		my $votes_quarter = $avg_score * $teams_sos->{$team};
 		my $votes = (2 * $votes_quarter + 2 * ($votes_quarter * _win_percentage $teams->{$team})) / 4;
