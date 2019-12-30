@@ -110,7 +110,6 @@ sub add_game {
 			opponent => $game->{opponent},
 			win => $game->{win},
 			score => $game->{score},
-			diff => $game->{diff},
 			x_factor => $game->{x_factor},
 		};
 	}
@@ -197,7 +196,6 @@ sub process_file {
 			opponent => trim ($row->[$columns->{home}]),
 			win => $v_margin > 0,
 			score => $v_game_score,
-			diff => $v_game_score / $h_game_score,
 			x_factor => $v_x_factor,
 		};
 
@@ -206,12 +204,8 @@ sub process_file {
 			opponent => trim ($row->[$columns->{visitor}]),
 			win => $v_margin < 0,
 			score => $h_game_score,
-			diff => $h_game_score / $v_game_score,
 			x_factor => $h_x_factor,
 		};
-
-		# say Dumper $v_game;
-		# say Dumper $h_game;
 
 		$teams = add_game $teams, $v_game, $h_game;
 	}
@@ -321,7 +315,6 @@ sub generate_rankings {
 	foreach my $team (keys %{$teams}) {
 		my $total_score = 0;
 		my $game_count = 0;
-		my $total_diff = 0;
 
 		my @games = @{$teams->{$team}};
 		foreach my $game (@games) {
@@ -330,17 +323,14 @@ sub generate_rankings {
 			}
 			$game_count++;
 			$total_score += $game->{score};
-			$total_diff += $game->{diff};
 		}
 
 		my $avg_score = $total_score / ($game_count + .0000001);
-		my $avg_diff = $total_diff / ($game_count + .0000001);
 
 		my $votes_quarter = $avg_score * $teams_sos->{$team};
 		my $votes = (2 * $votes_quarter + 2 * ($votes_quarter * _win_percentage $teams->{$team})) / 4;
 
-		# $ballot->{$team} = ceil($votes);
-		$ballot->{$team} = ceil(100 * $avg_diff);
+		$ballot->{$team} = ceil($votes);
 	}
 
 	return $ballot;
