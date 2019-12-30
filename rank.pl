@@ -67,7 +67,7 @@ my $output_csv;
 }
 
 my $teams = {};
-my $dir = "data2017";
+my $dir = "data2019";
 my $cwd = cwd();
 
 opendir(DIR, $dir) or die $!;
